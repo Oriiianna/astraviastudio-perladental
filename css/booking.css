@@ -1,0 +1,718 @@
+/* ==========================================================
+   Perla Dental · booking.css
+   Cita guiada en 3 pasos + resumen final + etiqueta "Abierto ahora".
+   Tratamientos, días y horas son radios reales con aspecto de tarjeta/pastilla:
+   funcionan con teclado y lector de pantalla.
+   ========================================================== */
+
+/* Los botones y bloques ocultos con [hidden] deben ocultarse de verdad
+   (.btn usa display: inline-flex y ganaría al atributo) */
+.booking [hidden] {
+  display: none !important;
+}
+
+/* ---------- Abierto ahora ---------- */
+.open {
+  display: inline-flex;
+  align-items: center;
+  align-self: start;
+  gap: 0.7rem;
+  padding: 0.5rem 1rem 0.5rem 0.85rem;
+  background: var(--pastel-mint);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-sm);
+  line-height: 1.3;
+  color: #0b4f3a;
+}
+
+.open__dot {
+  position: relative;
+  flex: none;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  background: #12a36a;
+}
+
+.open__dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #12a36a;
+  opacity: 0;
+}
+
+.open__main {
+  font-weight: 700;
+}
+
+.open.is-closed {
+  background: var(--pastel-grey);
+  color: var(--ink-soft);
+}
+
+.open.is-closed .open__dot,
+.open.is-closed .open__dot::after {
+  background: var(--mute);
+}
+
+@keyframes pulse-dot {
+  from {
+    opacity: 0.55;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 2.8;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .open:not(.is-closed) .open__dot::after {
+    animation: pulse-dot 2s var(--ease-out) 4;
+  }
+}
+
+/* ---------- Indicador de pasos ---------- */
+.stepper {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0 2rem;
+}
+
+.stepper__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--mute);
+  transition: color 0.3s var(--ease);
+}
+
+.stepper__item:not(:last-child) {
+  flex: 1 1 0;
+}
+
+.stepper__item:not(:last-child)::after {
+  content: "";
+  flex: 1;
+  height: 0.125rem;
+  margin: 0 0.85rem;
+  background: var(--line);
+  border-radius: 0.125rem;
+  transition: background-color 0.5s var(--ease);
+}
+
+.stepper__item.is-done:not(:last-child)::after {
+  background: var(--blue-600);
+}
+
+.stepper__pearl {
+  position: relative;
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--white);
+  border: 0.125rem solid var(--line);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  transition:
+    background-color 0.4s var(--ease-out),
+    border-color 0.4s var(--ease-out),
+    box-shadow 0.4s var(--ease-out),
+    color 0.4s var(--ease-out);
+}
+
+.stepper__pearl .icon {
+  position: absolute;
+  width: 1.1rem;
+  height: 1.1rem;
+  opacity: 0;
+  scale: 0.4;
+  transition:
+    opacity 0.3s var(--ease),
+    scale 0.45s var(--ease-out);
+}
+
+.stepper__num {
+  transition: opacity 0.3s var(--ease);
+}
+
+.stepper__item.is-current {
+  color: var(--ink);
+}
+
+.stepper__item.is-current .stepper__pearl {
+  border-color: var(--orange-600);
+  box-shadow: 0 0 0 0.25rem rgba(194, 65, 12, 0.14);
+  color: var(--orange-700);
+}
+
+.stepper__item.is-done {
+  color: var(--ink);
+}
+
+.stepper__item.is-done .stepper__pearl {
+  background: radial-gradient(circle at 30% 25%, #4aa8ff 0, var(--blue-600) 62%);
+  border-color: transparent;
+  color: var(--white);
+}
+
+.stepper__item.is-done .stepper__num {
+  opacity: 0;
+}
+
+.stepper__item.is-done .stepper__pearl .icon {
+  opacity: 1;
+  scale: 1;
+}
+
+@media (max-width: 36em) {
+  /* en pantallas estrechas solo se escribe el nombre del paso actual */
+  .stepper__item:not(.is-current) .stepper__label {
+    display: none;
+  }
+
+  .stepper__item:not(:last-child)::after {
+    margin: 0 0.5rem;
+  }
+}
+
+/* ---------- Pasos ---------- */
+.step__title {
+  margin: 0 0 1.1rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  outline: none;
+}
+
+.step__hint,
+.step__note {
+  margin: 0.9rem 0 0;
+  font-size: var(--fs-sm);
+  color: var(--ink-soft);
+}
+
+@keyframes step-in-fwd {
+  from {
+    opacity: 0;
+    translate: 1.5rem 0;
+  }
+}
+
+@keyframes step-in-back {
+  from {
+    opacity: 0;
+    translate: -1.5rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .step:not([hidden]) {
+    animation: step-in-fwd 0.55s var(--ease-out) backwards;
+  }
+
+  .wizard[data-dir="back"] .step:not([hidden]) {
+    animation-name: step-in-back;
+  }
+}
+
+/* ---------- Elección de tratamiento ---------- */
+.choices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.choice,
+.day,
+.hour {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+/* el radio real queda encima, invisible, para recibir clic, foco y teclado */
+.choice input,
+.day input,
+.hour input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.choice__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  height: 100%;
+  padding: 1rem;
+  background: var(--sky-50);
+  border: 0.125rem solid var(--line);
+  border-radius: var(--r-md);
+  transition:
+    background-color 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    box-shadow 0.4s var(--ease-out),
+    translate 0.4s var(--ease-out);
+}
+
+.choice__card .icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--blue-700);
+}
+
+.choice__name {
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  hyphens: auto; /* "blanqueamiento" cabe en tarjetas estrechas */
+}
+
+.choice__tag {
+  padding: 0.15rem 0.6rem;
+  background: var(--pastel-mint);
+  border-radius: var(--r-pill);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: #0b4f3a;
+}
+
+.choice:hover .choice__card {
+  border-color: var(--blue-500);
+  translate: 0 -0.1875rem;
+}
+
+.choice input:checked + .choice__card {
+  background: var(--white);
+  border-color: var(--blue-600);
+  box-shadow: 0 0 0 0.25rem rgba(10, 111, 232, 0.14);
+}
+
+/* la perla de "elegido" entra al marcar */
+.choice__card::after {
+  content: "";
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 50%;
+  background: var(--blue-600) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m5 12 5 5L20 7' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 72% no-repeat;
+  opacity: 0;
+  scale: 0.3;
+  transition:
+    opacity 0.25s var(--ease),
+    scale 0.45s var(--ease-out);
+}
+
+.choice input:checked + .choice__card::after {
+  opacity: 1;
+  scale: 1;
+}
+
+.choice input:focus-visible + .choice__card,
+.day input:focus-visible + .day__card,
+.hour input:focus-visible + .hour__card {
+  outline: 0.1875rem solid var(--blue-700);
+  outline-offset: 0.1875rem;
+}
+
+@media (max-width: 40em) {
+  .choices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Días y horas ---------- */
+.days {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.4rem, 1fr));
+  gap: 0.6rem;
+}
+
+.day__card {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 0.1rem;
+  height: 100%;
+  padding: 0.7rem 0.25rem;
+  background: var(--sky-50);
+  border: 0.125rem solid var(--line);
+  border-radius: var(--r-md);
+  line-height: 1.15;
+  transition:
+    background-color 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    color 0.3s var(--ease),
+    translate 0.4s var(--ease-out);
+}
+
+.day__dow,
+.day__mon {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.day__num {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.day__tag {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--orange-700);
+}
+
+.day:hover .day__card,
+.hour:hover input:not(:disabled) + .hour__card {
+  border-color: var(--blue-500);
+  translate: 0 -0.1875rem;
+}
+
+.day input:checked + .day__card,
+.hour input:checked + .hour__card {
+  background: var(--blue-600);
+  border-color: var(--blue-600);
+  color: var(--white);
+}
+
+.day input:checked + .day__card .day__dow,
+.day input:checked + .day__card .day__mon,
+.day input:checked + .day__card .day__tag {
+  color: var(--white);
+}
+
+.hours {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5.2rem, 1fr));
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.hour__card {
+  display: block;
+  padding: 0.7rem 0.25rem;
+  background: var(--sky-50);
+  border: 0.125rem solid var(--line);
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  text-align: center;
+  transition:
+    background-color 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    color 0.3s var(--ease),
+    translate 0.4s var(--ease-out);
+}
+
+/* horas que ya no se pueden pedir (pasadas o inmediatas) o a la espera de elegir día */
+.hour input:disabled + .hour__card {
+  background: transparent;
+  border-style: dashed;
+  opacity: 0.45;
+}
+
+.hour:has(input:disabled) {
+  cursor: not-allowed;
+}
+
+/* ---------- Datos de contacto ---------- */
+.form__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 36em) {
+  .form__fields {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Navegación entre pasos ---------- */
+.wizard__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.75rem;
+}
+
+.btn--ghost {
+  padding: 0.85rem 1.5rem;
+  background: transparent;
+  border: 0.125rem solid var(--line);
+  color: var(--ink);
+}
+
+.btn--ghost:hover {
+  background: var(--sky-50);
+  border-color: var(--blue-500);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn--orange:disabled:hover {
+  background: var(--orange-600);
+}
+
+/* ---------- Resumen final ---------- */
+.confirm {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 36rem;
+  margin-top: 1.75rem;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: var(--sky-50);
+  border: 0.0625rem solid var(--line);
+  border-radius: var(--r-lg);
+}
+
+.confirm__badge {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background: radial-gradient(circle at 30% 25%, #4aa8ff 0, var(--blue-600) 62%);
+  border-radius: 50%;
+  color: var(--white);
+}
+
+.confirm__badge .icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  stroke-width: 2.4;
+}
+
+.confirm__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  outline: none;
+}
+
+.confirm__list {
+  display: grid;
+}
+
+.confirm__list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 0.0625rem solid var(--line);
+}
+
+.confirm__list dt {
+  color: var(--ink-soft);
+}
+
+.confirm__list dd {
+  font-weight: 600;
+  text-align: right;
+}
+
+.confirm__note {
+  color: var(--ink-soft);
+}
+
+.confirm__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------- Menú "¿En qué calendario?" ---------- */
+.calmenu {
+  position: relative;
+}
+
+.calmenu__panel {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  top: calc(100% + 0.6rem);
+  width: min(21.5rem, calc(100vw - 3rem));
+  padding: 0.5rem;
+  background: var(--white);
+  border: 0.0625rem solid var(--line);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+  transform-origin: top left;
+}
+
+.calmenu__title {
+  padding: 0.6rem 0.75rem 0.4rem;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.calmenu__list {
+  display: grid;
+  gap: 0.125rem;
+}
+
+.calmenu__item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--r-sm);
+  text-align: left;
+  transition: background-color 0.2s var(--ease);
+}
+
+.calmenu__item:hover,
+.calmenu__item:focus-visible {
+  background: var(--sky-50);
+}
+
+.calmenu__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--sky-100);
+  border-radius: var(--r-sm);
+  color: var(--blue-700);
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.calmenu__item:hover .calmenu__icon,
+.calmenu__item:focus-visible .calmenu__icon {
+  background: var(--blue-600);
+  color: var(--white);
+}
+
+.calmenu__text {
+  display: grid;
+  line-height: 1.25;
+}
+
+.calmenu__name {
+  font-weight: 600;
+}
+
+.calmenu__sub {
+  font-size: var(--fs-xs);
+  color: var(--ink-soft);
+}
+
+/* En pantallas estrechas el panel ocupa el ancho de la tarjeta, anclado al bloque de acciones */
+.confirm__actions {
+  position: relative;
+}
+
+@media (max-width: 40em) {
+  .calmenu {
+    position: static;
+  }
+
+  .calmenu__panel {
+    right: 0;
+    width: auto;
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    translate: 0 -0.5rem;
+    scale: 0.97;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .calmenu__panel:not([hidden]) {
+    animation: menu-in 0.35s var(--ease-out) backwards;
+  }
+}
+
+@keyframes badge-in {
+  from {
+    opacity: 0;
+    scale: 0.4;
+    rotate: -30deg;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .confirm:not([hidden]) .confirm__badge {
+    animation: badge-in 0.9s var(--ease-out) backwards;
+  }
+
+  .confirm:not([hidden]) > *:not(.confirm__badge) {
+    animation: rise-soft 0.8s var(--ease-out) backwards;
+  }
+
+  .confirm:not([hidden]) > *:nth-child(3) {
+    animation-delay: 0.1s;
+  }
+
+  .confirm:not([hidden]) > *:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+
+  .confirm:not([hidden]) > *:nth-child(5) {
+    animation-delay: 0.3s;
+  }
+}
+
+/* con el resumen visible, el indicador de pasos y la introducción sobran */
+.booking__form[data-state="done"] .stepper,
+.booking__form[data-state="done"] .booking__intro {
+  display: none;
+}
+
+/* ---------- Sin JavaScript: el asistente no funciona, se muestra el aviso con teléfono y WhatsApp ---------- */
+html:not(.js) .stepper,
+html:not(.js) .wizard {
+  display: none;
+}
+
+.noscript-note {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--sky-50);
+  border: 0.0625rem solid var(--line);
+  border-radius: var(--r-md);
+}
+
+.noscript-note a {
+  font-weight: 700;
+  color: var(--blue-700);
+}

@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <!-- Activa los estados de entrada de motion.css; .is-ready se añade sola a los 3,5 s por si falla el script -->
+  <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('is-ready')},3500);</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perla Dental | Clínica dental con trato cercano</title>
+  <meta name="description" content="Perla Dental: ortodoncia, alineadores, implantes, blanqueamiento y limpieza. Primera consulta gratuita. Demo creada por Astravia Studio.">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- DEMO: esta web tiene datos de ejemplo y no debe aparecer en buscadores. Quitar esta línea al publicar la web real -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Vista previa al compartir (WhatsApp, Facebook, LinkedIn, X).
+       IMPORTANTE al publicar: og:image, twitter:image y og:url necesitan la dirección ABSOLUTA,
+       por ejemplo https://tu-dominio.com/assets/img/og-image.jpg -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Perla Dental">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:title" content="Perla Dental | Clínica dental con trato cercano">
+  <meta property="og:description" content="Perla Dental: ortodoncia, alineadores, implantes, blanqueamiento y limpieza. Primera consulta gratuita. Demo creada por Astravia Studio.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Paciente sonriendo en el sillón dental. Perla Dental: una consulta tranquila para una sonrisa más luminosa.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Perla Dental | Clínica dental con trato cercano">
+  <meta name="twitter:description" content="Perla Dental: ortodoncia, alineadores, implantes, blanqueamiento y limpieza. Primera consulta gratuita. Demo creada por Astravia Studio.">
+  <meta name="twitter:image" content="assets/img/og-image.jpg">
+
+  <!-- Favicon: SVG para navegadores modernos, .ico de respaldo e icono para iOS -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/motion.css">
+</head>
+<body>
+
+<!-- ============ Sprite SVG: diente, salpicadura e ilustraciones ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="g-tooth" cx="35%" cy="25%" r="85%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".6" stop-color="#f1f8ff"/>
+      <stop offset="1" stop-color="#bcd9f2"/>
+    </radialGradient>
+    <linearGradient id="g-splash" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#37b6ff"/>
+      <stop offset=".55" stop-color="#0a7cf0"/>
+      <stop offset="1" stop-color="#064fb4"/>
+    </linearGradient>
+    <linearGradient id="g-lens" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff9a4a"/>
+      <stop offset="1" stop-color="#d4501a"/>
+    </linearGradient>
+    <linearGradient id="g-metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e9eef3"/>
+      <stop offset=".5" stop-color="#9aa9b8"/>
+      <stop offset="1" stop-color="#e9eef3"/>
+    </linearGradient>
+
+    <!-- Iconos Tabler (MIT): https://tabler.io/icons -->
+    <symbol id="i-dental" viewBox="0 0 24 24"><path d="M12 5.5c-1.074 -.586 -2.583 -1.5 -4 -1.5c-2.1 0 -4 1.247 -4 5c0 4.899 1.056 8.41 2.671 10.537c.573 .756 1.97 .521 2.567 -.236c.398 -.505 .819 -1.439 1.262 -2.801c.292 -.771 .892 -1.504 1.5 -1.5c.602 0 1.21 .737 1.5 1.5c.443 1.362 .864 2.295 1.262 2.8c.597 .759 2 .993 2.567 .237c1.615 -2.127 2.671 -5.637 2.671 -10.537c0 -3.74 -1.908 -5 -4 -5c-1.423 0 -2.92 .911 -4 1.5z" /><path d="M12 5.5l3 1.5" /></symbol>
+    <symbol id="i-dental-broken" viewBox="0 0 24 24"><path d="M12 5.5c-1.074 -.586 -2.583 -1.5 -4 -1.5c-2.1 0 -4 1.247 -4 5c0 4.899 1.056 8.41 2.671 10.537c.573 .756 1.97 .521 2.567 -.236c.398 -.505 .819 -1.439 1.262 -2.801c.292 -.771 .892 -1.504 1.5 -1.5c.602 0 1.21 .737 1.5 1.5c.443 1.362 .864 2.295 1.262 2.8c.597 .759 2 .993 2.567 .237c1.615 -2.127 2.671 -5.637 2.671 -10.537c0 -3.74 -1.908 -5 -4 -5c-1.423 0 -2.92 .911 -4 1.5z" /><path d="M12 5.5l1 2.5l-2 2l2 2" /></symbol>
+    <symbol id="i-mood-smile-beam" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 1 0 -18a9 9 0 0 1 0 18z" /><path d="M10 10c-.5 -1 -2.5 -1 -3 0" /><path d="M17 10c-.5 -1 -2.5 -1 -3 0" /><path d="M14.5 15a3.5 3.5 0 0 1 -5 0" /></symbol>
+    <symbol id="i-bone" viewBox="0 0 24 24"><path d="M15 3a3 3 0 0 1 3 3a3 3 0 1 1 -2.12 5.122l-4.758 4.758a3 3 0 1 1 -5.117 2.297l0 -.177l-.176 0a3 3 0 1 1 2.298 -5.115l4.758 -4.758a3 3 0 0 1 2.12 -5.122z" /></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M16 18a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm0 -12a2 2 0 0 1 2 2a2 2 0 0 1 2 -2a2 2 0 0 1 -2 -2a2 2 0 0 1 -2 2zm-7 12a6 6 0 0 1 6 -6a6 6 0 0 1 -6 -6a6 6 0 0 1 -6 6a6 6 0 0 1 6 6z" /></symbol>
+    <symbol id="i-circle-check" viewBox="0 0 24 24"><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M9 12l2 2l4 -4" /></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M5 12l14 0" /><path d="M5 12l6 6" /><path d="M5 12l6 -6" /></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M17 7l-10 10" /><path d="M8 7l9 0l0 9" /></symbol>
+
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></symbol>
+    <symbol id="i-brand-whatsapp" viewBox="0 0 24 24"><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></symbol>
+
+    <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" /></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 7v5l3 3" /></symbol>
+
+    <symbol id="i-stethoscope" viewBox="0 0 24 24"><path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1" /><path d="M8 15a6 6 0 1 0 12 0v-3" /><path d="M11 3v2" /><path d="M6 3v2" /><path d="M20 10m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /></symbol>
+    <symbol id="i-calendar-plus" viewBox="0 0 24 24"><path d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v5" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M16 19h6" /><path d="M19 16v6" /></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5l10 -10" /></symbol>
+
+    <symbol id="i-brand-google" viewBox="0 0 24 24"><path d="M20.945 11a9 9 0 1 1 -3.284 -5.997l-2.655 2.392a5.5 5.5 0 1 0 2.119 6.605h-4.125v-3h7.945z" /></symbol>
+    <symbol id="i-brand-windows" viewBox="0 0 24 24"><path d="M17.8 20l-12 -1.5c-1 -.1 -1.8 -.9 -1.8 -1.9v-9.2c0 -1 .8 -1.8 1.8 -1.9l12 -1.5c1.2 -.1 2.2 .8 2.2 1.9v12.1c0 1.2 -1.1 2.1 -2.2 1.9z" /><path d="M12 5l0 14" /><path d="M4 12l16 0" /></symbol>
+    <symbol id="i-brand-apple" viewBox="0 0 24 24"><path d="M8.286 7.008c-3.216 0 -4.286 3.23 -4.286 5.92c0 3.229 2.143 8.072 4.286 8.072c1.165 -.05 1.799 -.538 3.214 -.538c1.406 0 1.607 .538 3.214 .538s4.286 -3.229 4.286 -5.381c-.03 -.011 -2.649 -.434 -2.679 -3.23c-.02 -2.335 2.589 -3.179 2.679 -3.228c-1.096 -1.606 -3.162 -2.113 -3.75 -2.153c-1.535 -.12 -3.032 1.077 -3.75 1.077c-.729 0 -2.036 -1.077 -3.214 -1.077z" /><path d="M12 4a2 2 0 0 0 2 -2a2 2 0 0 0 -2 2" /></symbol>
+
+    <!-- Diente -->
+    <symbol id="tooth" viewBox="0 0 200 240">
+      <path fill="url(#g-tooth)" stroke="#9cc3e4" stroke-width="2"
+        d="M100 14C72 0 30 8 22 50C16 85 38 105 42 140C46 180 48 228 68 228C88 228 86 172 100 172C114 172 112 228 132 228C152 228 154 180 158 140C162 105 184 85 178 50C170 8 128 0 100 14Z"/>
+      <path fill="#fff" opacity=".85" d="M44 40C48 26 62 20 74 22C62 28 54 38 52 54C50 66 46 58 44 40Z"/>
+    </symbol>
+
+    <!-- Busto ilustrado (colores por variables CSS: --skin --hair --shirt) -->
+    <symbol id="bust-short" viewBox="0 0 200 240">
+      <path fill="var(--shirt)" d="M8 240C8 192 50 172 100 172C150 172 192 192 192 240Z"/>
+      <path fill="none" stroke="#fff" stroke-width="6" opacity=".55" d="M76 174L100 204L124 174"/>
+      <rect x="82" y="138" width="36" height="42" rx="14" fill="var(--skin)"/>
+      <ellipse cx="100" cy="102" rx="44" ry="52" fill="var(--skin)"/>
+      <path fill="var(--hair)" d="M54 102C48 48 78 38 100 38C124 38 152 50 146 102C140 78 122 70 100 70C78 70 60 78 54 102Z"/>
+      <circle cx="84" cy="104" r="3.6" fill="#0b2540"/><circle cx="116" cy="104" r="3.6" fill="#0b2540"/>
+      <path fill="#fff" stroke="#0b2540" stroke-width="2.5" stroke-linejoin="round" d="M80 124Q100 146 120 124Z"/>
+    </symbol>
+    <symbol id="bust-long" viewBox="0 0 200 240">
+      <path fill="var(--hair)" d="M46 112C38 40 68 26 100 26C134 26 162 40 154 112L160 196L40 196Z"/>
+      <path fill="var(--shirt)" d="M8 240C8 192 50 172 100 172C150 172 192 192 192 240Z"/>
+      <path fill="none" stroke="#fff" stroke-width="6" opacity=".55" d="M76 174L100 204L124 174"/>
+      <rect x="82" y="138" width="36" height="42" rx="14" fill="var(--skin)"/>
+      <ellipse cx="100" cy="104" rx="42" ry="50" fill="var(--skin)"/>
+      <path fill="var(--hair)" d="M56 98C60 56 84 46 104 48C128 50 146 66 144 98C132 76 118 70 100 70C80 70 66 80 56 98Z"/>
+      <circle cx="85" cy="106" r="3.6" fill="#0b2540"/><circle cx="115" cy="106" r="3.6" fill="#0b2540"/>
+      <path fill="#fff" stroke="#0b2540" stroke-width="2.5" stroke-linejoin="round" d="M81 126Q100 148 119 126Z"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<div class="frame">
+
+  <!-- ================= Cabecera ================= -->
+  <header class="header">
+    <a class="logo" href="#inicio" aria-label="Perla Dental, ir al inicio">
+      <svg class="logo__mark" viewBox="0 0 200 240" aria-hidden="true"><use href="#tooth"/></svg>
+      <span class="logo__text">Perla <span>Dental</span></span>
+    </a>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="visually-hidden">Abrir menú</span>
+      <span class="menu-btn__bars" aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav" id="menu" aria-label="Principal">
+      <ul class="nav__list">
+        <li><a href="#inicio" aria-current="location">Inicio</a></li>
+        <li><a href="#tratamientos">Tratamientos</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#cita">Contacto</a></li>
+      </ul>
+      <a class="btn btn--orange nav__cta" href="#cita">
+        Pedir cita
+        <span class="btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ================= Hero ================= -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <!-- Foto del hero: dejar el archivo en assets/img/hero.jpg (si no existe, se ve el fondo de respaldo) -->
+        <img class="hero__photo" src="assets/img/hero.jpg"
+             srcset="assets/img/hero-m.jpg 1200w, assets/img/hero.jpg 2400w" sizes="100vw"
+             width="2400" height="1340" alt="" fetchpriority="high">
+        <figure class="hero__art" aria-hidden="true">
+          <svg viewBox="-30 -10 660 660" role="img" aria-label="Diente blanco rodeado de una salpicadura azul">
+            <g transform="translate(300 312) scale(1.18) translate(-300 -312)"><path class="splash" fill="url(#g-splash)" stroke="url(#g-splash)" stroke-width="20" stroke-linejoin="round"
+              d="M272.6 171.3Q272.2 134.7 301.5 159.7Q330.7 184.7 358.7 161.8Q386.7 138.9 381.7 182.4Q376.8 225.9 406.3 211.8Q435.7 197.8 429.6 231.0Q423.4 264.2 451.7 277.3Q479.9 290.3 459.9 299.7Q439.9 309.0 472.6 334.1Q505.3 359.2 458.1 360.3Q410.9 361.4 428.9 399.1Q447.0 436.8 421.9 419.3Q396.9 401.8 431.1 469.1Q465.2 536.5 396.8 474.7Q328.3 412.9 298.7 485.6Q269.1 558.3 275.1 501.3Q281.1 444.2 237.0 507.9Q192.9 571.6 196.3 492.0Q199.6 412.3 126.3 445.1Q52.9 477.9 122.8 424.1Q192.7 370.4 112.0 353.1Q31.2 335.8 93.4 323.3Q155.6 310.7 123.0 291.9Q90.3 273.1 145.5 267.5Q200.7 261.9 172.1 244.0Q143.4 226.0 183.8 219.9Q224.1 213.8 219.5 189.9Q214.9 166.0 243.9 187.0Q273.0 208.0 272.6 171.3Z"/>
+            <g class="drops" fill="url(#g-splash)">
+              <circle cx="505.6" cy="591.4" r="8.2"/><circle cx="175.7" cy="613.3" r="7.6"/><circle cx="28.8" cy="494.1" r="11.7"/><circle cx="-40.2" cy="342.1" r="15.0"/>
+            </g></g>
+            <g class="hero__tooth"><use href="#tooth" x="195" y="186" width="210" height="252"/></g>
+          </svg>
+        </figure>
+
+        <div class="hero__inner">
+          <div class="hero__copy">
+            <h1 class="hero__title" id="hero-title">
+              <span>Una consulta tranquila</span>
+              <span>para una sonrisa</span>
+              <span class="hero__title-soft">más luminosa</span>
+            </h1>
+
+            <div class="hero__actions">
+              <a class="btn btn--white" href="#cita">
+                Pedir cita
+                <span class="btn__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </a>
+              <p class="hero__call">O llámanos: <a href="tel:+34900000000">900 000 000</a></p>
+            </div>
+          </div>
+
+          <div class="hero__card">
+            <p class="hero__num">8.000+</p>
+            <p class="hero__card-text">Pacientes atendidos en una clínica pensada para que la visita sea tranquila y eficaz.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Tratamientos (acordeón) ================= -->
+    <section class="section" id="tratamientos" aria-labelledby="trat-title">
+      <header class="section-head">
+        <h2 class="title" id="trat-title">
+          <span class="title__soft">Nuestros</span>
+          <span class="title__strong">Tratamientos</span>
+        </h2>
+        <p class="section-head__text">
+          Desde una limpieza hasta un implante: te explicamos cada opción, cuánto dura y cuánto cuesta antes de empezar.
+        </p>
+      </header>
+
+      <div class="svc" data-svc>
+        <ul class="svc__list">
+        <li class="svc__item" style="--bg:var(--pastel-grey)">
+          <h3 class="svc__head">
+            <button class="svc__btn" type="button" aria-expanded="false" aria-controls="svc-ortodoncia" aria-label="Ortodoncia">
+              <span class="svc__icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-dental"/></svg></span>
+              <span class="svc__vname" aria-hidden="true">Ortodoncia</span>
+            </button>
+          </h3>
+          <div class="svc__body" id="svc-ortodoncia">
+            <svg class="icon svc__mark" aria-hidden="true"><use href="#i-dental"/></svg>
+            <p class="svc__title">Ortodoncia</p>
+            <p class="svc__desc">Colocamos los dientes en su sitio con brackets metálicos o estéticos. Funciona igual de bien en niños que en adultos.</p>
+            <ul class="svc__checks">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Estudio digital de tu sonrisa</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Brackets metálicos y estéticos</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Revisión cada 4 a 6 semanas</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Plan y presupuesto cerrados</li>
+            </ul>
+            <a class="btn btn--orange svc__cta" href="#cita" data-tratamiento="ortodoncia">
+              Pedir cita para este tratamiento
+              <span class="btn__icon" aria-hidden="true"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span>
+            </a>
+          </div>
+        </li>
+        <li class="svc__item" style="--bg:var(--pastel-lav)">
+          <h3 class="svc__head">
+            <button class="svc__btn" type="button" aria-expanded="false" aria-controls="svc-alineadores" aria-label="Alineadores transparentes">
+              <span class="svc__icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-mood-smile-beam"/></svg></span>
+              <span class="svc__vname" aria-hidden="true">Alineadores transparentes</span>
+            </button>
+          </h3>
+          <div class="svc__body" id="svc-alineadores">
+            <svg class="icon svc__mark" aria-hidden="true"><use href="#i-mood-smile-beam"/></svg>
+            <p class="svc__title">Alineadores transparentes</p>
+            <p class="svc__desc">Fundas transparentes y extraíbles que mueven los dientes poco a poco, sin que casi se note que las llevas.</p>
+            <ul class="svc__checks">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Simulación 3D antes de empezar</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Te los quitas para comer</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Menos visitas a la clínica</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Casi invisibles</li>
+            </ul>
+            <a class="btn btn--orange svc__cta" href="#cita" data-tratamiento="alineadores">
+              Pedir cita para este tratamiento
+              <span class="btn__icon" aria-hidden="true"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span>
+            </a>
+          </div>
+        </li>
+        <li class="svc__item is-active" style="--bg:var(--pastel-mint)">
+          <h3 class="svc__head">
+            <button class="svc__btn" type="button" aria-expanded="true" aria-controls="svc-implantes" aria-label="Implantes dentales">
+              <span class="svc__icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-bone"/></svg></span>
+              <span class="svc__vname" aria-hidden="true">Implantes dentales</span>
+            </button>
+          </h3>
+          <div class="svc__body" id="svc-implantes">
+            <svg class="icon svc__mark" aria-hidden="true"><use href="#i-bone"/></svg>
+            <p class="svc__title">Implantes dentales</p>
+            <p class="svc__desc">Sustituimos la raíz de un diente perdido por una pieza de titanio y colocamos encima una corona a medida.</p>
+            <ul class="svc__checks">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Planificación con escáner 3D</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Titanio biocompatible</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Cirugía guiada y poco invasiva</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Corona hecha a medida</li>
+            </ul>
+            <a class="btn btn--orange svc__cta" href="#cita" data-tratamiento="implantes">
+              Pedir cita para este tratamiento
+              <span class="btn__icon" aria-hidden="true"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span>
+            </a>
+          </div>
+        </li>
+        <li class="svc__item" style="--bg:var(--pastel-pink)">
+          <h3 class="svc__head">
+            <button class="svc__btn" type="button" aria-expanded="false" aria-controls="svc-protesis" aria-label="Prótesis dentales">
+              <span class="svc__icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-dental-broken"/></svg></span>
+              <span class="svc__vname" aria-hidden="true">Prótesis dentales</span>
+            </button>
+          </h3>
+          <div class="svc__body" id="svc-protesis">
+            <svg class="icon svc__mark" aria-hidden="true"><use href="#i-dental-broken"/></svg>
+            <p class="svc__title">Prótesis dentales</p>
+            <p class="svc__desc">Reponemos uno o varios dientes para que vuelvas a masticar con comodidad y a sonreír sin pensarlo.</p>
+            <ul class="svc__checks">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Fijas o removibles</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Ajuste y revisiones incluidos</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Materiales de larga duración</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Color a juego con tus dientes</li>
+            </ul>
+            <a class="btn btn--orange svc__cta" href="#cita" data-tratamiento="protesis">
+              Pedir cita para este tratamiento
+              <span class="btn__icon" aria-hidden="true"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span>
+            </a>
+          </div>
+        </li>
+        <li class="svc__item" style="--bg:var(--pastel-peach)">
+          <h3 class="svc__head">
+            <button class="svc__btn" type="button" aria-expanded="false" aria-controls="svc-limpieza" aria-label="Higiene y blanqueamiento">
+              <span class="svc__icon-wrap"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg></span>
+              <span class="svc__vname" aria-hidden="true">Higiene y blanqueamiento</span>
+            </button>
+          </h3>
+          <div class="svc__body" id="svc-limpieza">
+            <svg class="icon svc__mark" aria-hidden="true"><use href="#i-sparkles"/></svg>
+            <p class="svc__title">Higiene y blanqueamiento</p>
+            <p class="svc__desc">Eliminamos el sarro y las manchas, y aclaramos el tono de tus dientes en una sola sesión en clínica.</p>
+            <ul class="svc__checks">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Limpieza sin dolor</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Blanqueamiento en una sesión</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Consejos para tu cepillado</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-circle-check"/></svg>Recomendado cada 6 meses</li>
+            </ul>
+            <a class="btn btn--orange svc__cta" href="#cita" data-tratamiento="limpieza">
+              Pedir cita para este tratamiento
+              <span class="btn__icon" aria-hidden="true"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span>
+            </a>
+          </div>
+        </li>
+        </ul>
+
+        <div class="svc__foot">
+          <p class="svc__hint">Pulsa un tratamiento para ver el detalle. ¿No ves el tuyo? <a href="#cita">Pregúntanos</a></p>
+          <div class="svc__nav">
+            <button class="round-btn" type="button" data-svc-dir="-1" aria-label="Tratamiento anterior"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+            <button class="round-btn round-btn--next" type="button" data-svc-dir="1" aria-label="Tratamiento siguiente"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Nosotros ================= -->
+    <section class="section section--tint" id="nosotros" aria-labelledby="nosotros-title">
+      <header class="section-head">
+        <h2 class="title" id="nosotros-title">
+          <span class="title__soft">Conoce</span>
+          <span class="title__strong">Perla Dental</span>
+        </h2>
+        <p class="section-head__text">
+          Nuestra idea es sencilla: que ir al dentista deje de dar pena. Combinamos diagnóstico digital con tiempo para escucharte, explicarte cada paso y diseñar un plan a tu medida.
+        </p>
+      </header>
+
+      <div class="collage">
+        <figure class="tile tile--clinic" style="--pos:58% 50%">
+          <img src="assets/img/nosotros-consulta.jpg" width="1800" height="1005" decoding="async"
+               alt="Sala de consulta luminosa con sillón dental azul, ventana y una planta">
+          <figcaption class="pill pill--float">Consulta</figcaption>
+        </figure>
+
+        <figure class="tile tile--smile" style="--pos:46% 35%">
+          <img src="assets/img/nosotros-sonrisa.jpg" width="1600" height="893" decoding="async"
+               alt="Paciente sonriendo en el sillón dental durante una revisión">
+          <figcaption class="pill pill--float">Alineación dental</figcaption>
+        </figure>
+
+        <figure class="tile tile--senior" style="--pos:55% 50%">
+          <img src="assets/img/nosotros-mayor.jpg" width="1600" height="893" decoding="async"
+               alt="Paciente mayor sonriendo mientras se mira en un espejo de mano tras su tratamiento">
+          <figcaption class="pill pill--vertical">Tratamientos</figcaption>
+        </figure>
+
+        <figure class="tile tile--chair" style="--pos:60% 25%">
+          <img src="assets/img/nosotros-sillon.jpg" width="1800" height="1005" decoding="async"
+               alt="Sillón dental azul y lámpara de consulta, con luz natural de fondo">
+          <figcaption class="pill pill--vertical">Sin prisas</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= Consulta gratuita ================= -->
+    <section class="promo" aria-labelledby="promo-title">
+      <div class="promo__copy">
+        <h2 class="promo__title" id="promo-title">Reserva tu <span>consulta gratuita</span></h2>
+        <p class="promo__text">Revisión, radiografía y plan de tratamiento sin coste el primer día.</p>
+        <a class="btn btn--white" href="#cita">
+          Reservar ahora
+          <span class="btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+      <svg class="promo__mascot" viewBox="0 0 200 240" aria-hidden="true">
+        <use href="#tooth"/>
+        <g stroke="#7a2a08" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="26" y="70" width="66" height="46" rx="20" fill="url(#g-lens)"/>
+          <rect x="108" y="70" width="66" height="46" rx="20" fill="url(#g-lens)"/>
+          <path d="M92 86Q100 78 108 86" fill="none"/>
+          <path d="M26 82 8 74M174 82l18-8" fill="none"/>
+        </g>
+        <path d="M78 142Q100 164 122 142" fill="none" stroke="#0b2540" stroke-width="5" stroke-linecap="round"/>
+        <path d="M40 90Q46 80 58 78" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </section>
+
+    <!-- ================= Equipo (carrusel) ================= -->
+    <section class="section" id="equipo" aria-labelledby="equipo-title">
+      <header class="section-head">
+        <h2 class="title" id="equipo-title">
+          <span class="title__soft">Nuestro</span>
+          <span class="title__strong">Equipo</span>
+        </h2>
+        <p class="section-head__text">
+          Especialistas que te explican lo que hacen y por qué lo hacen, con calma y sin tecnicismos.
+        </p>
+      </header>
+
+      <div class="team" data-team>
+        <ul class="team__track" tabindex="0" aria-label="Especialistas de la clínica. Desplázate para ver más">
+        <li class="doc" style="--skin:#e9b58d;--hair:#2a1a12;--shirt:#5ab0f0">
+          <div class="doc__photo">
+            <!-- Respaldo ilustrado: se ve solo si no existe la foto en assets/img/team/lucia.jpg -->
+            <svg class="doc__fallback" viewBox="0 0 200 240" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#bust-long"/></svg>
+            <img src="assets/img/team/lucia.jpg" alt="Dra. Lucía Vidal, ortodoncia" width="960" height="1280" decoding="async">
+          </div>
+          <div class="doc__info">
+            <div>
+              <h3 class="doc__name">Dra. Lucía Vidal</h3>
+              <p class="doc__role">Ortodoncia</p>
+            </div>
+          </div>
+        </li>
+        <li class="doc" style="--skin:#f1c7a4;--hair:#1b1b1f;--shirt:#8aa0b6">
+          <div class="doc__photo">
+            <!-- Respaldo ilustrado: se ve solo si no existe la foto en assets/img/team/mateo.jpg -->
+            <svg class="doc__fallback" viewBox="0 0 200 240" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#bust-short"/></svg>
+            <img src="assets/img/team/mateo.jpg" alt="Dr. Mateo Ríos, implantología" width="960" height="1280" decoding="async">
+          </div>
+          <div class="doc__info">
+            <div>
+              <h3 class="doc__name">Dr. Mateo Ríos</h3>
+              <p class="doc__role">Implantología</p>
+            </div>
+          </div>
+        </li>
+        <li class="doc" style="--skin:#c98f66;--hair:#2b1b14;--shirt:#6d8aa6">
+          <div class="doc__photo">
+            <!-- Respaldo ilustrado: se ve solo si no existe la foto en assets/img/team/ines.jpg -->
+            <svg class="doc__fallback" viewBox="0 0 200 240" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#bust-long"/></svg>
+            <img src="assets/img/team/ines.jpg" alt="Dra. Inés Morales, odontopediatría" width="960" height="1280" decoding="async">
+          </div>
+          <div class="doc__info">
+            <div>
+              <h3 class="doc__name">Dra. Inés Morales</h3>
+              <p class="doc__role">Odontopediatría</p>
+            </div>
+          </div>
+        </li>
+        <li class="doc" style="--skin:#f0c3a0;--hair:#5a4636;--shirt:#7b95ad">
+          <div class="doc__photo">
+            <!-- Respaldo ilustrado: se ve solo si no existe la foto en assets/img/team/hugo.jpg -->
+            <svg class="doc__fallback" viewBox="0 0 200 240" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#bust-short"/></svg>
+            <img src="assets/img/team/hugo.jpg" alt="Dr. Hugo Serrano, endodoncia" width="960" height="1280" decoding="async">
+          </div>
+          <div class="doc__info">
+            <div>
+              <h3 class="doc__name">Dr. Hugo Serrano</h3>
+              <p class="doc__role">Endodoncia</p>
+            </div>
+          </div>
+        </li>
+        <li class="doc" style="--skin:#e4b08a;--hair:#8a5a36;--shirt:#6f8ea8">
+          <div class="doc__photo">
+            <!-- Respaldo ilustrado: se ve solo si no existe la foto en assets/img/team/marta.jpg -->
+            <svg class="doc__fallback" viewBox="0 0 200 240" preserveAspectRatio="xMidYMax meet" aria-hidden="true"><use href="#bust-long"/></svg>
+            <img src="assets/img/team/marta.jpg" alt="Dra. Marta Olmos, periodoncia" width="960" height="1280" decoding="async">
+          </div>
+          <div class="doc__info">
+            <div>
+              <h3 class="doc__name">Dra. Marta Olmos</h3>
+              <p class="doc__role">Periodoncia</p>
+            </div>
+          </div>
+        </li>
+        </ul>
+
+        <div class="team__nav">
+          <button class="round-btn" type="button" data-team-dir="-1" aria-label="Especialista anterior"><svg class="icon" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+          <button class="round-btn round-btn--next" type="button" data-team-dir="1" aria-label="Especialista siguiente"><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Cita ================= -->
+    <section class="section section--tint-strong" id="cita" aria-labelledby="cita-title">
+      <div class="booking">
+        <div class="booking__form">
+          <h2 class="title" id="cita-title">
+            <span class="title__soft">Pide</span>
+            <span class="title__strong">tu cita</span>
+          </h2>
+          <p class="booking__intro">Te confirmamos por teléfono o correo en menos de 24 horas laborables.</p>
+
+          <noscript>
+            <div class="noscript-note">
+              <p><strong>Para pedir cita desde esta página necesitas activar JavaScript.</strong></p>
+              <p>Mientras tanto, puedes <a href="tel:+34900000000">llamarnos al 900 000 000</a> o <a href="https://wa.me/34900000000" target="_blank" rel="noopener">escribirnos por WhatsApp</a>.</p>
+            </div>
+          </noscript>
+
+          <ol class="stepper" aria-label="Pasos para pedir cita">
+            <li class="stepper__item is-current" aria-current="step">
+              <span class="stepper__pearl" aria-hidden="true"><span class="stepper__num">1</span><svg class="icon"><use href="#i-check"/></svg></span>
+              <span class="stepper__label">Tratamiento</span>
+            </li>
+            <li class="stepper__item">
+              <span class="stepper__pearl" aria-hidden="true"><span class="stepper__num">2</span><svg class="icon"><use href="#i-check"/></svg></span>
+              <span class="stepper__label">Fecha y hora</span>
+            </li>
+            <li class="stepper__item">
+              <span class="stepper__pearl" aria-hidden="true"><span class="stepper__num">3</span><svg class="icon"><use href="#i-check"/></svg></span>
+              <span class="stepper__label">Tus datos</span>
+            </li>
+          </ol>
+          <p class="visually-hidden" role="status" aria-live="polite" data-announce></p>
+
+          <form class="wizard" novalidate>
+            <div class="step" role="radiogroup" aria-labelledby="step-1-title">
+              <h3 class="step__title" id="step-1-title" tabindex="-1">¿Qué necesitas?</h3>
+              <div class="choices">
+              <label class="choice">
+                <input type="radio" name="tratamiento" value="consulta">
+                <span class="choice__card">
+                  <svg class="icon" aria-hidden="true"><use href="#i-stethoscope"/></svg>
+                  <span class="choice__name">Primera consulta</span>
+                <span class="choice__tag">Gratuita</span>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="tratamiento" value="ortodoncia">
+                <span class="choice__card">
+                  <svg class="icon" aria-hidden="true"><use href="#i-dental"/></svg>
+                  <span class="choice__name">Ortodoncia</span>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="tratamiento" value="alineadores">
+                <span class="choice__card">
+                  <svg class="icon" aria-hidden="true"><use href="#i-mood-smile-beam"/></svg>
+                  <span class="choice__name">Alineadores transparentes</span>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="tratamiento" value="implantes">
+                <span class="choice__card">
+                  <svg class="icon" aria-hidden="true"><use href="#i-bone"/></svg>
+                  <span class="choice__name">Implantes dentales</span>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="tratamiento" value="protesis">
+                <span class="choice__card">
+                  <svg class="icon" aria-hidden="true"><use href="#i-dental-broken"/></svg>
+                  <span class="choice__name">Prótesis dentales</span>
+                </span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="tratamiento" value="limpieza">
+                <span class="choice__card">
+                  <svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>
+                  <span class="choice__name">Higiene y blanqueamiento</span>
+                </span>
+              </label>
+              </div>
+            </div>
+
+            <div class="step" role="group" aria-labelledby="step-2-title" hidden>
+              <h3 class="step__title" id="step-2-title" tabindex="-1">¿Cuándo te viene bien?</h3>
+              <div class="days" role="radiogroup" aria-label="Día" data-days></div>
+              <div class="hours" role="radiogroup" aria-label="Hora" data-hours></div>
+              <p class="step__hint" data-hours-hint>Elige un día para ver las horas disponibles.</p>
+            </div>
+
+            <div class="step" role="group" aria-labelledby="step-3-title" hidden>
+              <h3 class="step__title" id="step-3-title" tabindex="-1">¿Cómo te llamamos?</h3>
+              <div class="form__fields">
+                <div class="field">
+                  <label for="nombre">Nombre completo</label>
+                  <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+                </div>
+                <div class="field">
+                  <label for="telefono">Teléfono</label>
+                  <input id="telefono" name="telefono" type="tel" autocomplete="tel" inputmode="tel" required>
+                </div>
+                <div class="field field--wide">
+                  <label for="email">Correo electrónico</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required>
+                </div>
+              </div>
+              <p class="step__note">Solo usaremos tus datos para confirmar la cita.</p>
+            </div>
+
+            <div class="wizard__nav">
+              <button class="btn btn--ghost" type="button" data-prev hidden>Atrás</button>
+              <button class="btn btn--orange" type="button" data-next disabled>
+                Siguiente
+                <span class="btn__icon" aria-hidden="true"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span>
+              </button>
+              <button class="btn btn--orange" type="submit" data-submit hidden>
+                Pedir cita
+                <span class="btn__icon" aria-hidden="true"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span>
+              </button>
+              <p class="form__status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div class="confirm" hidden>
+            <div class="confirm__badge" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></div>
+            <h3 class="confirm__title" tabindex="-1">¡Listo, <span data-c-name></span>! Tu solicitud está en camino.</h3>
+            <dl class="confirm__list">
+              <div><dt>Tratamiento</dt><dd data-c-treatment></dd></div>
+              <div><dt>Día</dt><dd data-c-date></dd></div>
+              <div><dt>Hora</dt><dd data-c-time></dd></div>
+              <div><dt>Te escribiremos a</dt><dd data-c-contact></dd></div>
+            </dl>
+            <p class="confirm__note">Te confirmamos por teléfono o correo en menos de 24 horas laborables.</p>
+            <div class="confirm__actions">
+              <div class="calmenu">
+                <button class="btn btn--orange" type="button" data-cal-toggle aria-expanded="false" aria-controls="cal-options">
+                  Añadir a mi calendario
+                  <span class="btn__icon" aria-hidden="true"><svg class="icon"><use href="#i-calendar-plus"/></svg></span>
+                </button>
+                <div class="calmenu__panel" id="cal-options" hidden>
+                  <p class="calmenu__title">¿En qué calendario?</p>
+                  <ul class="calmenu__list">
+                    <li>
+                      <a class="calmenu__item" data-cal="google" href="https://calendar.google.com/" target="_blank" rel="noopener">
+                        <span class="calmenu__icon" aria-hidden="true"><svg class="icon"><use href="#i-brand-google"/></svg></span>
+                        <span class="calmenu__text"><span class="calmenu__name">Google Calendar</span><span class="calmenu__sub">Se abre en una pestaña nueva</span></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="calmenu__item" data-cal="outlook" href="https://outlook.live.com/calendar/" target="_blank" rel="noopener">
+                        <span class="calmenu__icon" aria-hidden="true"><svg class="icon"><use href="#i-brand-windows"/></svg></span>
+                        <span class="calmenu__text"><span class="calmenu__name">Outlook</span><span class="calmenu__sub">Se abre en una pestaña nueva</span></span>
+                      </a>
+                    </li>
+                    <li>
+                      <button class="calmenu__item" type="button" data-ics>
+                        <span class="calmenu__icon" aria-hidden="true"><svg class="icon"><use href="#i-brand-apple"/></svg></span>
+                        <span class="calmenu__text"><span class="calmenu__name">Apple Calendar u otro</span><span class="calmenu__sub">Descarga un archivo (.ics)</span></span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <button class="btn btn--ghost" type="button" data-again>Pedir otra cita</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking__aside" role="group" aria-labelledby="aside-title">
+          <p class="open" data-open>
+            <span class="open__dot" aria-hidden="true"></span>
+            <span><strong class="open__main" data-open-main>Horario</strong><span data-open-sub>: lunes a viernes, de 9:00 a 19:00</span></span>
+          </p>
+          <h3 class="aside__title" id="aside-title">¿Prefieres hablar con alguien?</h3>
+          <ul class="aside__list">
+            <li>
+              <a class="aside__item" href="tel:+34900000000">
+                <span class="aside__icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+                <span><span class="aside__label">Llámanos</span><span class="aside__value">900 000 000</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="aside__item" href="https://wa.me/34900000000" target="_blank" rel="noopener">
+                <span class="aside__icon"><svg class="icon" aria-hidden="true"><use href="#i-brand-whatsapp"/></svg></span>
+                <span><span class="aside__label">WhatsApp</span><span class="aside__value">Respondemos en el día</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="aside__item" href="mailto:hola@perladental.demo">
+                <span class="aside__icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+                <span><span class="aside__label">Correo</span><span class="aside__value">hola@perladental.demo</span></span>
+              </a>
+            </li>
+            <li class="aside__item">
+              <span class="aside__icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
+              <span><span class="aside__label">Horario</span><span class="aside__value">Lunes a viernes, de 9:00 a 19:00</span></span>
+            </li>
+            <li class="aside__item">
+              <span class="aside__icon"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg></span>
+              <span><span class="aside__label">Clínica</span><span class="aside__value">Calle de la Demo 12, 28000 Ciudad</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= Footer ================= -->
+  <footer class="site-footer">
+  <div class="footer">
+    <p class="footer__bigname" aria-hidden="true">Perla Dental</p>
+
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <p class="logo__text">Perla <span>Dental</span></p>
+        <address>
+          Calle de la Demo 12, 28000 Ciudad<br>
+          Teléfono <a href="tel:+34900000000">900 000 000</a><br>
+          <a href="mailto:hola@perladental.demo">hola@perladental.demo</a><br>
+          Horario: lunes a viernes, 9:00 a 19:00
+        </address>
+      </div>
+
+      <nav aria-label="Tratamientos">
+        <h2 class="footer__h">Tratamientos</h2>
+        <ul>
+          <li><a href="#tratamientos">Ortodoncia</a></li>
+          <li><a href="#tratamientos">Alineadores</a></li>
+          <li><a href="#tratamientos">Prótesis</a></li>
+          <li><a href="#tratamientos">Implantes</a></li>
+          <li><a href="#tratamientos">Blanqueamiento</a></li>
+          <li><a href="#tratamientos">Limpieza</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="La clínica">
+        <h2 class="footer__h">La clínica</h2>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#cita">Pedir cita</a></li>
+          <li><a href="#cita">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+
+  <!-- Barra de derechos: banda a ancho completo en el azul de la marca -->
+  <div class="legal">
+
+    <div class="footer__bottom">
+      <p>© 2026 Perla Dental. Sitio de demostración.</p>
+      <p class="footer__credit">Demo creada por <a class="credit-link" href="https://api.whatsapp.com/send/?phone=5491168717233&amp;text=Hola%2C+vi+la+demo+de+Perla+Dental+y+me+interesa+un+sitio+as%C3%AD+para+mi+marca.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Astravia Studio<span class="visually-hidden"> (abre WhatsApp en una pestaña nueva)</span></a></p>
+    </div>
+  </div>
+  </footer>
+</div>
+
+<!-- ================= Chat flotante ================= -->
+<div class="chat" data-chat>
+  <section class="chat__panel" id="chat-panel" aria-labelledby="chat-title" hidden>
+    <header class="chat__head">
+      <div>
+        <h2 class="chat__title" id="chat-title">Perla Dental</h2>
+        <p class="chat__sub">Asistente de demostración</p>
+      </div>
+      <button class="chat__close" type="button" aria-label="Cerrar chat">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+
+    <div class="chat__log" role="log" aria-live="polite" aria-label="Conversación"></div>
+
+    <div class="chat__quick" aria-label="Respuestas rápidas">
+      <button type="button" data-q="horario">Horario</button>
+      <button type="button" data-q="tratamientos">Tratamientos</button>
+      <button type="button" data-q="consulta">Primera consulta</button>
+      <button type="button" data-q="cita">Pedir cita</button>
+    </div>
+
+    <form class="chat__form" autocomplete="off">
+      <label class="visually-hidden" for="chat-input">Escribe tu mensaje</label>
+      <input id="chat-input" type="text" placeholder="Escribe tu pregunta">
+      <button type="submit" aria-label="Enviar mensaje">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12 20 4l-4 16-4-6-8-2Z" fill="currentColor"/></svg>
+      </button>
+    </form>
+
+    <p class="chat__credit">Demo creada por <a class="credit-link" href="https://api.whatsapp.com/send/?phone=5491168717233&amp;text=Hola%2C+vi+la+demo+de+Perla+Dental+y+me+interesa+un+sitio+as%C3%AD+para+mi+marca.&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener">Astravia Studio<span class="visually-hidden"> (abre WhatsApp en una pestaña nueva)</span></a></p>
+  </section>
+
+  <button class="chat__toggle" type="button" aria-expanded="false" aria-controls="chat-panel">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5Z" fill="currentColor"/></svg>
+    <span class="chat__toggle-text">Habla con nosotros</span>
+  </button>
+</div>
+
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/booking.js"></script>
+<script src="js/motion.js"></script>
+</body>
+</html>

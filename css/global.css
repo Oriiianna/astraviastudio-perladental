@@ -1,0 +1,227 @@
+/* ==========================================================
+   Perla Dental · global.css
+   Tokens, escala tipográfica (--fs-*), reset y base.
+   Todo en rem para que el responsive escale bien.
+   ========================================================== */
+
+:root {
+  /* ---- Color ---- */
+  --sky-50: #eaf7ff;
+  --sky-100: #d4efff;
+  --sky-200: #b7e3ff;
+  --blue-500: #1190f7;
+  --blue-600: #0a6fe8;
+  --blue-650: #0759c6; /* azul de la barra de derechos */
+  --blue-700: #064fb4;
+  --orange-600: #c2410c; /* 5.2:1 con blanco: pasa AA en botones */
+  --orange-700: #a3360a;
+  --ink: #0b2540;
+  --ink-soft: #3e546b;
+  --mute: #586b80; /* primera palabra de los títulos: 5,5:1 sobre blanco, 5:1 sobre celeste */
+  --white: #ffffff;
+  --line: #cfe3f2;
+
+  /* Pasteles por tratamiento */
+  --pastel-grey: #eceff3;
+  --pastel-lav: #e2e0fa;
+  --pastel-pink: #ffd8e1;
+  --pastel-mint: #cdf2e8;
+  --pastel-peach: #ffe3cf;
+  --pastel-sky: #d6ecff;
+
+  /* ---- Tipografía ---- */
+  --font-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Escala: mínimo 0.875rem, nada diminuto */
+  --fs-xs: 0.875rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --fs-md: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+  --fs-lg: clamp(1.375rem, 1.2rem + 0.9vw, 2rem);
+  --fs-xl: clamp(2rem, 1.25rem + 2.2vw, 3.5rem); /* título de sección (H2) */
+  --fs-2xl: clamp(2.5rem, 1rem + 4vw, 4.75rem); /* título del hero (H1) */
+
+  --lh-body: 1.6;
+  --lh-tight: 1.1;
+
+  /* Alto de la cabecera fija y borde blanco alrededor del hero */
+  --header-h: 5rem;
+  --hero-inset: clamp(0.5rem, 1.2vw, 1rem);
+
+  /* Ritmo vertical entre secciones */
+  --section-y: clamp(3rem, 7vw, 5rem);
+
+  /* ---- Radios ---- */
+  --r-sm: 0.75rem;
+  --r-md: 1.25rem;
+  --r-lg: 2rem;
+  --r-xl: 2.5rem;
+  --r-pill: 62rem;
+
+  /* ---- Espaciado ---- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4.5rem;
+  --sp-9: 6.5rem;
+
+  /* ---- Sombras (suaves y teñidas de azul, no grises) ---- */
+  --shadow-sm: 0 0.25rem 1rem rgba(10, 111, 232, 0.1);
+  --shadow-md: 0 1rem 2.5rem rgba(10, 111, 232, 0.16);
+
+  --ease: cubic-bezier(0.22, 0.8, 0.3, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* llegadas seguras, sin rebote */
+}
+
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem); /* los anclas no quedan tapados por la cabecera fija */
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+}
+
+/* ---- Tipografía: cortes de línea ---- */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+/* ---- Superficies del navegador, tematizadas ---- */
+html {
+  scrollbar-color: var(--blue-500) var(--sky-100);
+}
+
+::selection {
+  background: var(--blue-600);
+  color: var(--white);
+}
+
+input,
+select,
+textarea {
+  accent-color: var(--blue-600);
+  caret-color: var(--blue-600);
+}
+
+/* ---- Accesibilidad ---- */
+:focus-visible {
+  outline: 0.1875rem solid var(--blue-700);
+  outline-offset: 0.1875rem;
+  border-radius: 0.25rem;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 0.0625rem;
+  height: 0.0625rem;
+  margin: -0.0625rem;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--ink);
+  color: var(--white);
+  border-radius: var(--r-pill);
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Perla Dental</title>
+  <rect width="64" height="64" rx="15" fill="#0a6fe8"/>
+  <path fill="#fff" transform="translate(32 33.5) scale(0.19) translate(-100 -116)"
+    d="M100 14C72 0 30 8 22 50C16 85 38 105 42 140C46 180 48 228 68 228C88 228 86 172 100 172C114 172 112 228 132 228C152 228 154 180 158 140C162 105 184 85 178 50C170 8 128 0 100 14Z"/>
+</svg>
